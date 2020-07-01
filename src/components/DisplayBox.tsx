@@ -1,42 +1,45 @@
 import React from 'react';
 import '../App.css';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import {StoreType, EntityType} from '../types/index';
+import {StoreType, EntityType} from '../types/type';
+import Ttest from './Ttest'
 
 
-const DisplayBox=(list:EntityType[],movieOrTv:"tv" | "movie")=>{
-    return(
-          
-        <div className="row">
-            <div className="col-md-12">    
-                {
-                list.map((entity, i) => { 
+const DisplayBox=(props)=>{
+    console.log(props.list);
+    return(  
+            
+            <div className="row border">    
+                {/* <Ttest value={props.list[0].id}/> */}
+                {props.list.map((entity, i) => { 
                     return (
-                    <div className="card"> 
-                        <div className="card-image waves-effect waves-block waves-light">
-                            { entity.poster_path == null ? <img className="" src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} alt="Card image cap" style={{ width: "100%",
-                                height: 360}}/> : <img className="" src={`http://image.tmdb.org/t/p/w185${entity.poster_path}`} alt="Card image cap" style={{ width: "100%",
-                                height: 360}} />}
+                    <div className=" col-md-3 p-3"> 
+                        <div className="" style={{height: 'auto'}}>
+                            <div className="card-image">
+                                { entity.poster_path == null ? <img className="rounded border img-fluid" src={`https://s3-ap-southeast-1.amazonaws.com/upcode/static/default-image.jpg`} alt="Card image cap" style={{ width: "100%",
+                                    height: 'auto'}}/> : <img className="rounded border img-fluid" src={`http://image.tmdb.org/t/p/w185${entity.poster_path}`} alt="Card imaage cap" style={{ width: "100%",
+                                    height: 'auto'}} />}
+                            </div>
+                            <div className="card-content font-weight-bold p-2">                    
+                                <p>{entity.title?entity.title : entity.name}</p>
+                            </div>   
                         </div>
-                        <div className="card-content">                    
-                            <p>{entity.title?entity.title : entity.name}</p>
-                        </div>   
                     </div>
                     )
                 })
                 }         
             </div>
-        </div>
+       
     
     )
 
 }
 
-const mapStateToProps = (state:StoreType) => {
-    return {
-        list: state.list,
-        movieOrTv: state.movieOrTv
-    }
+
+function mapStateToProps( state :StoreType)
+{
+    return{list: state.list}
 }
 
-export default connect(mapStateToProps)(DisplayBox);
+export default connect(mapStateToProps)(DisplayBox)

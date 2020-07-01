@@ -1,20 +1,10 @@
-import React, { JSXElementConstructor } from 'react';
-import '../App.css';
-import Search from './Search'
-import MovieOrtv from './MovieOrTv'
-import FilterSortForm from './FilterSortForm'
-import DisplayBox from './DisplayBox'
-
-function App(){
-  return (
-    <div className="container">
-      <Search/>
-      <MovieOrtv/>
-      <FilterSortForm/>
-      <DisplayBox/>
-    </div>
-   
-  );
+import Main from './Main'
+import {connect} from 'react-redux'
+import { StoreType } from '../types/type'
+function mapStateToProps( state :StoreType)
+{
+    return{stateInMain: state}
 }
+const App= connect(mapStateToProps)(Main)
 
-export default App;
+export default App

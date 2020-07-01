@@ -1,5 +1,5 @@
 
-import {SEARCH_ONCHANGE,MOVIEORTV_ONCLICK,GENRE_ONCHANGE,LANGUAGE_ONCHANGE,SORT_ONCHANGE,SCROLL,ActionType} from '../types/index'
+import {SEARCH_ONCHANGE,MOVIEORTV_ONCLICK,GENRE_ONCHANGE,LANGUAGE_ONCHANGE,SORT_ONCHANGE,SCROLL,ActionType} from '../types/type'
 
 export function search_Onchange(target:HTMLInputElement):ActionType {
     return { 

@@ -11,6 +11,7 @@ const FilterSortForm = () => {
             
           
             <div className="col-md-1 form-control border-0">Fliters: </div>
+         
             <MovieGenre/>
             
             <select className="col-md-2 form-control" name="Language" id="Language">
