@@ -1,38 +1,27 @@
 
-import {SEARCH_ONCHANGE,MOVIEORTV_ONCLICK,GENRE_ONCHANGE,LANGUAGE_ONCHANGE,SORT_ONCHANGE,SCROLL,ActionType} from '../types/type'
+import {SEARCH_ONCHANGE,MOVIEORTV_ONCLICK,SORTFILTER_CHANGE,SCROLL,ActionType,SourceForMovieOrTv_OnClickAction,SourceForSortFilter_Change,SourceForScroll} from '../types/type'
 
-export function search_Onchange(target:HTMLInputElement):ActionType {
+export function search_Onchange(source:SourceForSortFilter_Change):ActionType {
     return { 
         type: SEARCH_ONCHANGE,
-        payload:target.value 
+        source: source
     }
 }
-export function movieortv_Onclick(clickedOn:'movie'|'tv'):ActionType{
+export function movieortv_Onclick(source:SourceForMovieOrTv_OnClickAction):ActionType{
     return {
         type: MOVIEORTV_ONCLICK,
-        payload: clickedOn
+        source: source
     }
 }
-export function genre_Change(target:HTMLSelectElement):ActionType{
+export function sortfilter_Change(source:SourceForSortFilter_Change):ActionType{
     return {
-        type: GENRE_ONCHANGE,
-        payload:+target.value
+        type: SORTFILTER_CHANGE,
+        source: source
     }
 }
-export function language_Onchange(target:HTMLSelectElement):ActionType{
+export function scroll(source:SourceForScroll):ActionType{
     return {
-        type: LANGUAGE_ONCHANGE,
-        payload:target.value
-    }
-}
-export function sort_Onchange(target:HTMLSelectElement):ActionType{
-    return {
-        type:SORT_ONCHANGE,
-        payload:target.value
-    }
-}
-export function scroll():ActionType{
-    return {
-        type:SCROLL
+        type: SCROLL,
+        source: source
     }
 }

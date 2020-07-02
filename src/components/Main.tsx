@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../App.css';
 import Search from './Search'
-import MovieOrtv from './MovieOrTv'
+import MovieOrTv from './MovieOrTv'
 import FilterSortForm from './FilterSortForm'
 import DisplayBox from './DisplayBox'
+import { PropInterface } from '../types/type';
 
 
-class Main extends Component{
-    // constructor(){
-    //     // super()
-    // }
-    render(){
-        console.log('hello');
+const Main =(props :PropInterface)=>{
         return(
-            <div className="container">
-            <Search />
-            <MovieOrtv/>
-            <FilterSortForm/>
-            <DisplayBox />
-        </div>
+            
+            <div className="container ">
+                <Search {...props}/>
+                <MovieOrTv {...props}/>
+                <FilterSortForm {...props}/>
+                <DisplayBox {...props}/>
+            </div>
         )
-    }
+    
 }
 
 
