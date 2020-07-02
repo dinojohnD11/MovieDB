@@ -24,19 +24,19 @@ class DisplayBox extends Component<PropInterface>{
             }} );
     }
     
-    componentWillUnmount() {
-        window.removeEventListener('scroll', ()=>{if(((window.scrollY+window.innerHeight)==document.documentElement.scrollHeight)&&((this.props.stateInMain.currentPage++)<(this.props.stateInMain.totalPages)))
-            {
-                let url=`${this.props.stateInMain.lastUrl}&page=${this.props.stateInMain.currentPage}`;
-                setTimeout(() => {fetch(url)
-                    .then(data=>data.json())
-                    .then(data=>this.props.scroll({list: this.props.stateInMain.list.concat([...data.results]), currentPage: this.props.stateInMain.currentPage+1,lastUrl:url.replace(`&page${this.props.stateInMain.currentPage}`,'')}))
-                    .catch(err=>console.log(err));
+    // componentWillUnmount() {
+    //     window.removeEventListener('scroll', ()=>{if(((window.scrollY+window.innerHeight)==document.documentElement.scrollHeight)&&((this.props.stateInMain.currentPage++)<(this.props.stateInMain.totalPages)))
+    //         {
+    //             let url=`${this.props.stateInMain.lastUrl}&page=${this.props.stateInMain.currentPage}`;
+    //             setTimeout(() => {fetch(url)
+    //                 .then(data=>data.json())
+    //                 .then(data=>this.props.scroll({list: this.props.stateInMain.list.concat([...data.results]), currentPage: this.props.stateInMain.currentPage+1,lastUrl:url.replace(`&page${this.props.stateInMain.currentPage}`,'')}))
+    //                 .catch(err=>console.log(err));
                     
-                }, 100);
+    //             }, 100);
                 
-            }} );
-    }
+    //         }} );
+    // }
 
 
 
